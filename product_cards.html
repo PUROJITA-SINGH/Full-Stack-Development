@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Bar</title>
+</head>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f8;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 1%;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding:2%;
+      width: calc(25% - 32px);
+      min-width: 23%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .card .description {
+      margin: 0;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #1a73e8;
+    }
+
+    .submit-btn {
+      margin-top: auto;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .card {
+        width: calc(50% - 32px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+<body>
+<div class="container">
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
+        <h2>Product 1</h2>
+        <p class="description">A stylish and modern product with premium features and great value.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
+        <h2>Product 2</h2>
+        <p class="description">A reliable option designed for everyday use and comfort.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+        <h2>Product 3</h2>
+        <p class="description">An elegant choice packed with performance and durability.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+        <h2>Product 4</h2>
+        <p class="description">An elegant choice packed with performance and durability.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+        <h2>Product 4</h2>
+        <p class="description">An elegant choice packed with performance and durability.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+        <h2>Product 4</h2>
+        <p class="description">An elegant choice packed with performance and durability.</p>
+        <p class="price">520</p>
+        <button class="submit-btn" type="button">Submit</button>
+    </div>
+</div>
+</body>
+</html>

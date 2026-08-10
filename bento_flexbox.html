@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Flexbox Layout</title>
+  <style>
+    .container {
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem;
+      align-items: flex-start;
+    }
+    .card {
+      flex: 1 1 220px;
+      border: 1px solid black;
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      min-width: 180px;
+      background: #fff;
+    }
+    .card-large {
+      flex: 2 1 45%;
+      min-height: 260px;
+    }
+    .card-wide {
+      flex: 2 1 100%;
+      min-height: 140px;
+    }
+    .card-tall{
+        flex: 1 2 10%;
+        min-height: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card card-large">
+      <h1>Main</h1>
+    </div>
+    <div class="card">
+      <h1>App</h1>
+    </div>
+    <div class="card card-tall">
+      <h1>yellow</h1>
+    </div>
+    <div class="card">
+      <h1>Media</h1>
+    </div>
+    <div class="card">
+      <h1>Notes</h1>
+    </div>
+    <div class="card">
+      <h1>Tasks</h1>
+    </div>
+    <div class="card card-tall">
+      <h1>Details</h1>
+    </div>
+    <div class="card card-wide">
+      <h1>Summary</h1>
+    </div>
+  </div>
+</body>
+</html>
