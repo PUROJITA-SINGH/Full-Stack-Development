@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mountains</title>
+        <style>
+            body {
+                margin: 0;
+                min-height: 100vh;
+                font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+                background: radial-gradient(circle at top, #0b1224 0%, #020204 90%);
+                color: #eef2ff;
+            }
+            .container {
+                width: 100%;
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 36px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 28px;
+            }
+            .box {
+                position: relative;
+                width: 100%;
+                min-height: 56vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 36px;
+                box-sizing: border-box;
+                border-radius: 28px;
+                border: 1px solid rgba(255,255,255,0.12);
+                box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+                background-color: rgba(8, 12, 20, 0.88);
+                transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            }
+            .box:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 32px 100px rgba(0, 0, 0, 0.35);
+                border-color: rgba(255,255,255,0.2);
+            }
+            #box1 {
+                position: sticky;
+                top: 24px;
+                background-color: rgba(8, 12, 20, 0.96);
+            }
+            #box2 {
+                background-image: linear-gradient(180deg, rgba(0,0,0,0.26), rgba(0,0,0,0.88)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80');
+                background-size: cover;
+                background-position: center;
+                min-height: 70vh;
+                border-radius: 28px;
+                box-shadow: 0 28px 95px rgba(0, 0, 0, 0.45);
+                border: 1px solid rgba(255,255,255,0.14);
+            }
+            p {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                max-width: 860px;
+                font-size: clamp(1.4rem, 2vw, 2.2rem);
+                line-height: 1.45;
+                text-align: center;
+                text-shadow: 0 2px 16px rgba(0,0,0,0.55);
+            }
+            #box1 p {
+                font-size: clamp(2.8rem, 4vw, 4.4rem);
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
+            @media (max-width: 768px) {
+                .container {
+                    padding: 24px 18px;
+                    gap: 20px;
+                }
+                .box {
+                    min-height: 48vh;
+                    padding: 28px;
+                }
+                #box2 {
+                    min-height: 58vh;
+                }
+                p {
+                    font-size: 1.35rem;
+                }
+                #box1 p {
+                    font-size: 2.8rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box" id="box1">
+                <p>Mountains</p>
+            </div>
+            <div class="box" id="box2">
+                <p>Majestic peaks rising above the clouds.</p>
+            </div>
+            <div class="box" id="box3">
+                <p>Snow-capped summits, rugged slopes, and wild beauty.</p>
+            </div>
+            <div class="box" id="box4">
+                <p>A place for adventure, silence, and awe.</p>
+            </div>
+            <div class="box" id="box5">
+                <p>Discover the heights of the natural world.</p>
+            </div>
+        </div>
+
+            
+    </body>
+</html>
