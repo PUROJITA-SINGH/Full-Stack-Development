@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {   
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 180px repeat(3, 1fr);
+            grid-template-rows: 80px repeat(2, minmax(140px, 1fr)) 60px;
+            grid-template-areas:
+                "header header header header"
+                "sidebar main main feature"
+                "sidebar stat showcase feature"
+                "footer footer footer footer";
+            gap: 12px;
+            padding: 12px;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+        }
+
+        header, aside, main, footer, .feature, .stat, .showcase {
+            padding: 24px;
+            border-radius: 16px;
+            color: #fff;
+        }
+
+        header { grid-area: header; background: #2563eb; }
+        aside { grid-area: sidebar; background: #0f172a; }
+        main { grid-area: main; background: #14b8a6; }
+        .feature { grid-area: feature; background: #f97316; }
+        .stat { grid-area: stat; background: #8b5cf6; }
+        .showcase { grid-area: showcase; background: #ec4899; }
+        footer { grid-area: footer; background: #475569; }
+
+        @media (max-width: 600px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, auto);
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "feature"
+                    "stat"
+                    "showcase"
+                    "footer";
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <aside>Sidebar</aside>
+    <main>Main content</main>
+    <section class="feature">Featured box</section>
+    <section class="stat">Statistics</section>
+    <section class="showcase">Showcase</section>
+    <footer>Footer</footer>
+</body>
+</html>

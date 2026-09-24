@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at top, #f5f7fa 0%, #dfe5eb 28%, #b8bec8 58%, #8d99a6 100%);
+        }
+
+        .container {
+            display: grid;
+            width: min(700px, calc(100vw - 32px));
+            height: min(520px, calc(100vh - 32px));
+            aspect-ratio: 700 / 520;
+            box-sizing: border-box;
+
+            grid-template-areas:
+                "box1 box1 box2 box3 box4"
+                "box1 box1 box5 box3 box6"
+                "box7 box8 box8 box9 box10"
+                "box11 box12 box12 box12 box10";
+
+            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #18202c;
+            background-image: url("https://gregcartmell.com/wp-content/uploads/2017/10/the-lost-witch.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 45px rgb(18 27 38 / 35%), inset 0 1px rgb(255 255 255 / 20%);
+            transition: transform 180ms ease;
+            animation: boxPopIn 650ms cubic-bezier(.2, .85, .3, 1.2) both;
+        }
+
+        .container > div {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.35rem;
+            color: #f4f7fa;
+            border: 1px solid rgb(255 255 255 / 65%);
+            border-radius: 14px;
+            text-shadow: 0 1px 2px rgb(0 0 0 / 65%);
+            box-shadow: inset 0 1px rgb(255 255 255 / 75%), inset 0 -8px 18px rgb(0 0 0 / 18%), 0 4px 10px rgb(0 0 0 / 22%);
+            transition: transform 180ms ease, filter 180ms ease;
+            animation: tilePopIn 500ms cubic-bezier(.2, .85, .3, 1.2) both;
+            cursor: pointer;
+        }
+
+        .container > div.selected {
+            z-index: 2;
+            transform: scale(1.08);
+            filter: brightness(1.12);
+        }
+
+        .container > div:nth-child(1) { animation-delay: 80ms; }
+        .container > div:nth-child(2) { animation-delay: 120ms; }
+        .container > div:nth-child(3) { animation-delay: 160ms; }
+        .container > div:nth-child(4) { animation-delay: 200ms; }
+        .container > div:nth-child(5) { animation-delay: 240ms; }
+        .container > div:nth-child(6) { animation-delay: 280ms; }
+        .container > div:nth-child(7) { animation-delay: 320ms; }
+        .container > div:nth-child(8) { animation-delay: 360ms; }
+        .container > div:nth-child(9) { animation-delay: 400ms; }
+        .container > div:nth-child(10) { animation-delay: 440ms; }
+        .container > div:nth-child(11) { animation-delay: 480ms; }
+        .container > div:nth-child(12) { animation-delay: 520ms; }
+
+        @keyframes boxPopIn {
+            from { opacity: 0; transform: scale(.72); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes tilePopIn {
+            from { opacity: 0; transform: scale(.65); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .container > div::before {
+            content: "";
+            position: absolute;
+            inset: -40% -20%;
+            background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 8%) 43%, rgb(255 255 255 / 70%) 50%, rgb(255 255 255 / 10%) 57%, transparent 65%);
+            transform: translateX(-55%);
+            transition: transform 400ms ease;
+            pointer-events: none;
+        }
+
+        .container > div:hover::before {
+            transform: translateX(55%);
+        }
+
+        .container > div:nth-child(n) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 520px), (max-height: 420px) {
+            .container {
+                width: calc(100vw - 16px);
+                height: auto;
+                min-height: 220px;
+                gap: 5px;
+                padding: 5px;
+                border-radius: 14px;
+            }
+        }
+
+        .container > div:hover {
+            filter: brightness(1.08);
+        }
+
+        .container:hover {
+            transform: scale(1.025);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .container,
+            .container > div {
+                animation: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="grid-area:box1; background:#ffb3ba;">1</div>
+        <div style="grid-area:box2; background:#ffdfba;">2</div>
+        <div style="grid-area:box3; background:#ffffba;">3</div>
+        <div style="grid-area:box4; background:#baffc9;">4</div>
+        <div style="grid-area:box5; background:hsl(206, 78%, 49%);">5</div>
+        <div style="grid-area:box6; background:hsl(220, 78%, 60%);">6</div>
+        <div style="grid-area:box7; background:hsl(180, 70%, 55%);">7</div>
+        <div style="grid-area:box8; background:hsl(280, 60%, 65%);">8</div>
+        <div style="grid-area:box9; background:hsl(330, 70%, 65%);">9</div>
+        <div style="grid-area:box10; background:hsl(30, 80%, 62%);">10</div>
+        <div style="grid-area:box11; background:hsl(120, 60%, 62%);">11</div>
+        <div style="grid-area:box12; background:hsl(40, 80%, 68%);">12</div>
+    </div>
+    <script>
+        document.querySelectorAll('.container > div').forEach((box) => {
+            box.addEventListener('click', () => {
+                document.querySelector('.container > div.selected')?.classList.remove('selected');
+                box.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        :root {
+            --bg: #e2f3f5;
+            --light: #b8e3e8;
+            --primary: #087f8c;
+            --dark: #075e68;
+            --border: #72bfc8;
+            --white: #f7ffff;
+            --text: #164e58;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: #222;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .topbar h1 { margin: 0; font-size: 1.2rem; }
+
+        .nav-links { display: flex; gap: 20px; color: var(--text); }
+
+        .nav-links span { cursor: pointer; }
+        .nav-links span:hover { color: var(--primary); }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        .sidebar {
+            width: 210px;
+            padding: 20px;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+        }
+
+        .sidebar h2 { margin: 0; color: var(--text); }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .menu li {
+            padding: 10px;
+            margin-bottom: 8px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .menu li:first-child, .menu li:hover { background: var(--light); color: var(--dark); font-weight: 700; }
+
+        .main { flex: 1; padding: 25px; }
+        .main-header { margin-bottom: 26px; }
+        .main-header h2 { margin: 0 0 6px; font-size: 1.6rem; }
+        .main-header p { margin: 0; color: var(--text); }
+
+        .container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            background: var(--white);
+            border: 1px solid var(--border);
+        }
+
+        .card img { width: 100%; height: 150px; object-fit: cover; background: var(--light); }
+        .card h3 { margin: 2px 0 0; font-size: 1.05rem; }
+        .description { margin: 0; color: #397782; }
+        .price { margin: 0; color: var(--dark); font-weight: bold; }
+
+        .submit-btn {
+            padding: 11px 14px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover { background: var(--dark); }
+
+        .product-table {
+            width: 100%;
+            margin-top: 32px;
+            border-collapse: collapse;
+            background: var(--white);
+            border: 1px solid var(--border);
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-table th { background: var(--light); }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 650px) {
+            .topbar { padding: 16px 20px; }
+            .nav-links { gap: 12px; }
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; padding: 20px; border-right: 0; border-bottom: 1px solid var(--border); }
+            .menu { grid-template-columns: repeat(4, 1fr); margin-top: 12px; }
+            .menu li { padding: 10px 6px; text-align: center; font-size: .85rem; }
+            .main { padding: 24px 20px; }
+            .container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 420px) {
+            .nav-links { display: none; }
+            .menu { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <h1>Dashboard</h1>
+        <nav class="nav-links" aria-label="Primary navigation">
+            <span>Overview</span>
+            <span>Reports</span>
+            <span>Settings</span>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul class="menu">
+                <li>Home</li>
+                <li>Products</li>
+                <li>Analytics</li>
+                <li>Profile</li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <div class="main-header">
+                <h2>Featured Products</h2>
+                <p>Explore the latest products in your collection.</p>
+            </div>
+            <div class="container">
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p class="description">A stylish and modern product with premium features and great value.</p>
+                    <p class="price">$520</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p class="description">A reliable option designed for everyday use and comfort.</p>
+                    <p class="price">$520</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+                    <h3>Product 3</h3>
+                    <p class="description">An elegant choice packed with performance and durability.</p>
+                    <p class="price">$520</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+4" alt="Product 4">
+                    <h3>Product 4</h3>
+                    <p class="description">A simple and useful product made for home and office.</p>
+                    <p class="price">$340</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+5" alt="Product 5">
+                    <h3>Product 5</h3>
+                    <p class="description">A practical product with a clean design and easy setup.</p>
+                    <p class="price">$275</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200?text=Product+6" alt="Product 6">
+                    <h3>Product 6</h3>
+                    <p class="description">A dependable choice with good quality and lasting performance.</p>
+                    <p class="price">$410</p>
+                    <button class="submit-btn" type="button">Submit</button>
+                </article>
+            </div>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Stock</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Product 1</td><td>Technology</td><td>12</td><td>$520</td></tr>
+                    <tr><td>Product 2</td><td>Home</td><td>8</td><td>$520</td></tr>
+                    <tr><td>Product 3</td><td>Office</td><td>20</td><td>$520</td></tr>
+                    <tr><td>Product 4</td><td>Home</td><td>15</td><td>$340</td></tr>
+                    <tr><td>Product 5</td><td>Office</td><td>10</td><td>$275</td></tr>
+                    <tr><td>Product 6</td><td>Technology</td><td>6</td><td>$410</td></tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display:flex;
+        flex-direction: row;/*flex-direction: column;*/
+        outline: 1px solid black;
+        font-size: 30px;
+        text-align: center; 
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+
+    }
+    .container>div{
+        outline: 1px dashed black;
+        flex-basis: 100px;
+        height: 100px;
+        
+    }
+    .container>div:nth-child(odd){
+        background-color: lightblue;
+    }
+    #box1,#box2, #box3, #box4, #box5{
+        align-items: center;
+        justify-items: center;
+    }
+    #box1{
+        /*flex-grow: 3;*/
+        /*flex : <flex-grow> <flex-shrink> <flex-basis>;*/
+        flex: 3 0 100px;
+    }
+    #box2,#box3,#box4,#box5{
+        /*flex-grow: 1;*/
+        flex: 0 1 100px;
+    }
+    /*#box4{
+        flex-shrink: 1;
+    }*/
+</style>
+<body>
+    <div class="container">
+        <div id="box1">1</div>
+        <div id="box2">2</div>
+        <div id="box3">3</div>
+        <div id="box4">4</div>
+        <div id="box5">5</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-color: hsl(86, 86%, 74%);
+            --secondary-color: hwb(189 18% 20%);
+            --size: 30px;
+        }
+        .container {
+            display: grid;
+            height: 500px;
+            width: 500px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: calc(var(--size) / 3);
+            outline: 1px solid black;
+            border-radius: var(--size);
+        }
+        #parent {
+            background-color: var(--primary-color);
+            display: grid;
+            grid-row:1/3;
+            grid-column:1/3;
+            grid-template-columns: subgrid;
+            grid-template-rows: subgrid;
+            border-radius: var(--size);
+        }
+        #child{
+            background-color: var(--secondary-color);
+            grid-column : 2/3;
+            grid-row: 2/3;
+            font-size: var(--size);
+            text-align: center;
+            border-radius: var(--size);
+ 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="parent">
+            <div id="child">
+            <div style="grid-area:box1">hello</div>
+        </div>
+    </div>
+</body>
+</html>

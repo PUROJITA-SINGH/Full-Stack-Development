@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Centered Image with Text Wrap</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.65;
+      color: #222;
+      background: #f7f3ea;
+    }
+
+    h1 {
+      color: #c00;
+      font-size: 28px;
+      margin-bottom: 4px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 24px;
+      text-align: center;
+      border-bottom: 3px double #222;
+      padding-bottom: 14px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .newspaper {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      border-top: 1px solid #999;
+      padding-top: 22px;
+    }
+
+    .column p:first-child { margin-top: 0; }
+
+    .article-image {
+      width: 260px;
+      max-width: 100%;
+      margin: 8px auto 20px;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .clearfix {
+      clear: both;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 760px) {
+      .newspaper { grid-template-columns: 1fr; }
+      .article-image { grid-row: 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Health and beauty</h1>
+  <h2>Taking confusion out of looking good</h2>
+
+  <p class="intro">
+    Looking good doesn’t have to be confusing. With the right guidance and 
+    a few simple techniques, anyone can create a polished appearance that 
+    feels natural and confident.
+  </p>
+
+  <div class="newspaper">
+    <div class="column">
+      <p>
+    Many people struggle with choosing the right colours, styles and 
+    products because there is simply too much information available. 
+    Magazines, social media and shop displays can leave you feeling 
+    overwhelmed rather than inspired.
+      </p>
+
+      <p>
+    The key is to focus on a few core principles: understand your skin tone, 
+    choose clothes that flatter your body shape, and keep your makeup and 
+    hair routine simple but effective. Once these foundations are in place, 
+    experimenting becomes fun instead of stressful.
+      </p>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" class="article-image" alt="Woman with magazines">
+
+    <div class="column">
+      <p>
+    Experts recommend starting with a basic wardrobe of well-fitting pieces 
+    in colours that suit you. From there you can add statement items and 
+    accessories that express your personality. The same approach works for 
+    makeup – master the everyday look first, then play with trends.
+      </p>
+
+      <p>
+    Taking the confusion out of looking good is really about building 
+    confidence through knowledge. When you know what works for you, every 
+    day becomes easier and more enjoyable.
+  </p>
+
+  <div class="clearfix"></div>
+
+      </p>
+    </div>
+  </div>
+    More content can continue here below the image if needed.
+    The key is to focus on a few core principles: understand your skin tone, 
+    choose clothes that flatter your body shape, and keep your makeup and 
+    hair routine simple but effective. Once these foundations are in place, 
+    experimenting becomes fun instead of stressful.  Experts recommend starting with a basic wardrobe of well-fitting pieces 
+    in colours that suit you. From there you can add statement items and 
+    accessories that express your personality. The same approach works for 
+    makeup – master the everyday look first, then play with trends.
+  
+    Taking the confusion out of looking good is really about building 
+    confidence through knowledge. When you know what works for you, every 
+    day becomes easier and more enjoyable.
+  <p class="clearfix">
+
+</body>
+</html>

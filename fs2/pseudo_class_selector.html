@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* Pseudo-class selector */
+        li:hover {
+            color: orange;
+            cursor: pointer;
+        }
+
+        /* More pseudo-class selectors */
+        li:first-child {
+            font-weight: bold;
+        }
+
+        li:nth-child(even) {
+            background-color: #f3f3f3;
+        }
+
+        li:first-of-type {
+            border-left: 4px solid steelblue;
+        }
+
+        a:link {
+            color: blue;
+        }
+
+        a:visited {
+            color: purple;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid orange;
+        }
+
+        input:valid {
+            border: 2px solid seagreen;
+        }
+
+        input:invalid {
+            border: 2px solid crimson;
+        }
+
+        input:checked + label {
+            color: seagreen;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        /* Pseudo-element selectors */
+        h2::before {
+            content: "★ ";
+            color: goldenrod;
+        }
+
+        h2::after {
+            content: " ★";
+            color: goldenrod;
+        }
+
+        input::placeholder {
+            color: #777;
+        }
+
+        li::marker {
+            color: tomato;
+        }
+
+        /* Pseudo-element selector */
+        li::after {         
+            content: "-->";
+            color: purple;
+        }
+
+        p::first-letter {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li for="label">Attribute selectors</li>
+        <li class="item-2">Class selectors</li>
+        <li id="item-1">ID selectors</li>
+        <li>Combinator</li>
+        <li class="descendant">Descendant combinator</li>
+        <li class="adjacent">Adjacent sibling combinator</li>
+        <li>Adjacent sibling target</li>
+        <li class="general">General sibling combinator</li>
+        <li>General sibling target</li>
+        <li>Pseudo-class selectors</li>
+        <li>Pseudo-element selectors</li>
+        <li>Type selectors</li>
+        <li>Universal selectors</li>
+        <li> Element selectors</li>
+    </ul>
+
+    <p>Element selector is basically a tag selector; it selects all the elements of that tag.</p>
+
+    <section>
+        <h2>Pseudo-class examples</h2>
+        <p><a href="https://developer.mozilla.org/">Visit MDN</a></p>
+        <form>
+            <input type="email" placeholder="Enter a valid email" required>
+            <input type="checkbox" id="agree">
+            <label for="agree">I agree</label>
+            <button type="button">Hover or click me</button>
+        </form>
+    </section>
+</body>
+</html>
+
+
+
+       
+
+        
+
+        

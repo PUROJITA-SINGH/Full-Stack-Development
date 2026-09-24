@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         /* Attribute selector */
+        [for="label"] {
+            color: green;
+        }
+
+         /* Class selector */
+        .item-2 {
+            color: blue;
+        }
+        /* ID selector */
+        #item-1 {
+            color: red;
+        }
+        /* Combinator selector - child combinator */
+        ul > li:nth-child(4) {
+            color: teal;
+        }
+
+        /* Combinator selector - descendant combinator */
+        ul li.descendant {
+            background-color: #f0f0f0;
+        }
+
+        /* Combinator selector - adjacent sibling combinator */
+        li.adjacent + li {
+            text-decoration: underline;
+        }
+
+        /* Combinator selector - general sibling combinator */
+        li.general ~ li {
+            font-style: italic;
+        }
+
+        /* Type selector */
+        li {
+            color: black;
+        }
+
+        /* Universal selector */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Type selector */
+        p {
+            color: rgba(42, 64, 161, 0.555);
+        }
+
+        /* Pseudo-class selector */
+        li:hover {
+            color: orange;
+            cursor: pointer;
+        }
+
+        /* Pseudo-element selector */
+        li::after {         
+            content: "-->";
+            color: purple;
+        }
+
+        p::first-letter {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li for="label">Attribute selectors</li>
+        <li class="item-2">Class selectors</li>
+        <li id="item-1">ID selectors</li>
+        <li>Combinator</li>
+        <li class="descendant">Descendant combinator</li>
+        <li class="adjacent">Adjacent sibling combinator</li>
+        <li>Adjacent sibling target</li>
+        <li class="general">General sibling combinator</li>
+        <li>General sibling target</li>
+        <li>Pseudo-class selectors</li>
+        <li>Pseudo-element selectors</li>
+        <li>Type selectors</li>
+        <li>Universal selectors</li>
+        <li> Element selectors</li>
+    </ul>
+
+    <p>Element selector is basically a tag selector; it selects all the elements of that tag.</p>
+</body>
+</html>
+
+
+
+       
+
+        
+
+        

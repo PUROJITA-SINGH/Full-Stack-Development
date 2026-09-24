@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-100 p-4 text-gray-900 dark:bg-gray-900 dark:text-white sm:p-8">
+  <main class="mx-auto max-w-2xl">
+    <button
+      id="dark-mode-button"
+      class="rounded bg-gray-800 px-4 py-2 text-white dark:bg-gray-200 dark:text-gray-900"
+    >
+      Toggle dark mode
+    </button>
+
+    <h1 class="mt-6 text-2xl font-bold sm:mt-8 sm:text-4xl">
+      Hello world!
+    </h1>
+  </main>
+
+  <script>
+    const button = document.querySelector("#dark-mode-button");
+
+    button.addEventListener("click", function () {
+      document.documentElement.classList.toggle("dark");
+    });
+  </script>
+</body>
+</html>
