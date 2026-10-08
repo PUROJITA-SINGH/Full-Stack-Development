@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdminPro – Analytics Dashboard</title>
+<style>
+  :root {
+    --bg: #F1F5F9;
+    --sidebar: #0F172A;
+    --sidebar-text: #CBD5E1;
+    --active: #4F46E5;
+    --primary: #2563EB;
+    --card: #FFFFFF;
+    --heading: #0F172A;
+    --body: #64748B;
+    --border: #E2E8F0;
+    --success: #16A34A;
+    --danger: #DC2626;
+    --warning: #D97706;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--body); font-size: 14px; }
+  ul { list-style: none; }
+
+  .app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  #nav-toggle { display: none; }
+
+  .sidebar {
+    position: sticky; top: 0; height: 100vh;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: var(--sidebar); color: var(--sidebar-text);
+    padding: 20px 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 28px; padding: 0 8px; }
+  .logo { width: 28px; height: 28px; border-radius: 8px; background: var(--primary); }
+  .menu { display: flex; flex-direction: column; gap: 4px; }
+  .menu a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 8px;
+    color: var(--sidebar-text); text-decoration: none; font-size: 14px; font-weight: 500;
+  }
+  .menu a.active { background: var(--active); color: #fff; }
+  .icon { width: 16px; height: 16px; border-radius: 4px; border: 2px solid currentColor; opacity: .8; }
+  .profile { display: flex; align-items: center; gap: 10px; padding: 12px 8px 0; border-top: 1px solid #1E293B; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #475569; flex-shrink: 0; }
+  .profile strong { display: block; color: #fff; font-size: 13px; font-weight: 600; }
+  .profile span { font-size: 12px; }
+
+  .content { display: flex; flex-direction: column; min-width: 0; }
+
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 0 32px; background: var(--card); border-bottom: 1px solid var(--border);
+  }
+  .hamburger { display: none; width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
+  .hamburger i { display: block; width: 16px; height: 2px; background: var(--heading); }
+  .search { flex: 1; max-width: 360px; height: 38px; display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+  .search input { flex: 1; border: 0; outline: 0; background: transparent; font: inherit; color: var(--heading); min-width: 0; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .bell { width: 20px; height: 20px; border: 2px solid var(--body); border-radius: 50% 50% 4px 4px; }
+
+  .main { display: flex; flex-direction: column; gap: 24px; padding: 32px; }
+  .main > h1 { font-size: 24px; font-weight: 700; color: var(--heading); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 0; }
+  .card h2 { font-size: 16px; font-weight: 600; color: var(--heading); }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  .link { color: var(--primary); font-size: 13px; font-weight: 500; }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .kpi { display: flex; flex-direction: column; gap: 8px; }
+  .kpi-icon { width: 36px; height: 36px; border-radius: 10px; background: #E0E7FF; }
+  .kpi-icon.green { background: #DCFCE7; }
+  .kpi-icon.purple { background: #EDE9FE; }
+  .kpi-icon.orange { background: #FEF3C7; }
+  .kpi-label { font-size: 14px; font-weight: 500; }
+  .kpi-value { font-size: 28px; font-weight: 700; color: var(--heading); }
+  .kpi-change { font-size: 12px; color: var(--success); font-weight: 500; }
+
+  .row { display: grid; gap: 24px; }
+  .row.top { grid-template-columns: 2fr 1fr; }
+  .row.bottom { grid-template-columns: 1fr 1fr; }
+
+  .big-number { font-size: 20px; font-weight: 700; color: var(--heading); }
+  .badge-up { color: var(--success); font-size: 12px; font-weight: 600; }
+
+  .chart-box { height: 240px; border: 2px dashed var(--border); border-radius: 8px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; color: var(--body); }
+  .chart-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; }
+
+  .bars { height: 200px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%; font-size: 12px; }
+  .bar { width: 100%; max-width: 32px; background: var(--primary); border-radius: 6px 6px 0 0; }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-weight: 500; color: var(--body); font-size: 13px; padding: 8px 8px 8px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 8px 12px 0; border-bottom: 1px solid var(--border); color: var(--heading); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  .status { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .delivered { background: #DCFCE7; color: var(--success); }
+  .processing { background: #DBEAFE; color: var(--primary); }
+  .shipped { background: #EDE9FE; color: var(--active); }
+  .cancelled { background: #FEE2E2; color: var(--danger); }
+  .up { color: var(--success); } .down { color: var(--danger); }
+
+  @media (max-width: 1023px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 767px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: fixed; left: 0; top: 0; z-index: 30; width: 240px; transform: translateX(-100%); transition: transform .2s; }
+    #nav-toggle:checked ~ .sidebar { transform: translateX(0); }
+    .hamburger { display: flex; }
+    .header { padding: 0 16px; }
+    .main { padding: 16px; }
+    .row.top, .row.bottom { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 639px) {
+    .kpis { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <input type="checkbox" id="nav-toggle" aria-label="Toggle menu">
+
+  <aside class="sidebar">
+    <div>
+      <div class="brand"><div class="logo"></div>AdminPro</div>
+      <ul class="menu">
+        <li><a href="#" class="active"><span class="icon"></span>Dashboard</a></li>
+        <li><a href="#"><span class="icon"></span>Analytics</a></li>
+        <li><a href="#"><span class="icon"></span>Users</a></li>
+        <li><a href="#"><span class="icon"></span>Orders</a></li>
+        <li><a href="#"><span class="icon"></span>Products</a></li>
+        <li><a href="#"><span class="icon"></span>Settings</a></li>
+      </ul>
+    </div>
+    <div class="profile">
+      <div class="avatar"></div>
+      <div><strong>Ayush Tiwari</strong><span>Admin</span></div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <!-- Header -->
+    <header class="header">
+      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+        <label for="nav-toggle" class="hamburger"><i></i><i></i><i></i></label>
+        <div class="search"><input type="text" placeholder="Search..."></div>
+      </div>
+      <div class="header-right">
+        <div class="bell"></div>
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <main class="main">
+      <h1>Dashboard</h1>
+
+      <section class="kpis">
+        <div class="card kpi"><div class="kpi-icon green"></div><span class="kpi-label">Total Revenue</span><span class="kpi-value">₹1,24,532</span><span class="kpi-change">↑ 12% from last month</span></div>
+        <div class="card kpi"><div class="kpi-icon"></div><span class="kpi-label">Total Orders</span><span class="kpi-value">892</span><span class="kpi-change">↑ 8% from last month</span></div>
+        <div class="card kpi"><div class="kpi-icon purple"></div><span class="kpi-label">Active Users</span><span class="kpi-value">3,521</span><span class="kpi-change">↑ 14% from last month</span></div>
+        <div class="card kpi"><div class="kpi-icon orange"></div><span class="kpi-label">Conversion Rate</span><span class="kpi-value">4.2%</span><span class="kpi-change">↑ 2% from last month</span></div>
+      </section>
+
+      <section class="row top">
+        <div class="card">
+          <div class="card-head">
+            <h2>Revenue Overview</h2>
+            <div style="text-align:right"><div class="big-number">₹1,24,532</div><span class="badge-up">+12%</span></div>
+          </div>
+          <div class="chart-box">Line chart placeholder</div>
+          <div class="chart-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Recent Orders</h2><a class="link" href="#">View all</a></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Rahul Sharma</td><td>₹2,499</td><td><span class="status delivered">Delivered</span></td></tr>
+                <tr><td>Priya Singh</td><td>₹2,499</td><td><span class="status processing">Processing</span></td></tr>
+                <tr><td>Amit Kumar</td><td>₹1,299</td><td><span class="status shipped">Shipped</span></td></tr>
+                <tr><td>Neha Gupta</td><td>₹3,299</td><td><span class="status delivered">Delivered</span></td></tr>
+                <tr><td>Sahil Verma</td><td>₹5,499</td><td><span class="status cancelled">Cancelled</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="row bottom">
+        <div class="card">
+          <div class="card-head"><h2>Traffic Overview</h2><span class="badge-up">↑ 18%</span></div>
+          <div class="big-number" style="margin-bottom:16px">8,432 <span style="font-size:13px;font-weight:400;color:var(--body)">Total visitors</span></div>
+          <div class="bars">
+            <div class="bar-col"><div class="bar" style="height:35%"></div>Mon</div>
+            <div class="bar-col"><div class="bar" style="height:50%"></div>Tue</div>
+            <div class="bar-col"><div class="bar" style="height:42%"></div>Wed</div>
+            <div class="bar-col"><div class="bar" style="height:65%"></div>Thu</div>
+            <div class="bar-col"><div class="bar" style="height:55%"></div>Fri</div>
+            <div class="bar-col"><div class="bar" style="height:72%"></div>Sat</div>
+            <div class="bar-col"><div class="bar" style="height:95%"></div>Sun</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Top Products</h2></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Product</th><th>Sales</th><th>Change</th></tr></thead>
+              <tbody>
+                <tr><td>Laptop Pro</td><td>2,450</td><td class="up">+12%</td></tr>
+                <tr><td>Wireless Earbuds</td><td>1,892</td><td class="up">+8%</td></tr>
+                <tr><td>Smart Watch</td><td>1,203</td><td class="up">+6%</td></tr>
+                <tr><td>Backpack</td><td>982</td><td class="up">+4%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
